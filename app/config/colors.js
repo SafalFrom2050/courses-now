@@ -3,4 +3,5 @@ export default {
   background: '#fff',
   secondary: '#FFC107',
   primaryText: '#fff',
+  backgroundText: '#454545',
 };

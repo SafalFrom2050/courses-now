@@ -3,6 +3,8 @@ import {
   StyleSheet, Text, View, TextInput, TouchableHighlight,
 } from 'react-native';
 
+import Checkmark from 'react-native-eva-icons/icons/CheckmarkCircle_2';
+
 import LoginDecoration from '../views/LoginDecoration';
 
 export default function Login({ navigation }) {
@@ -30,7 +32,11 @@ export default function Login({ navigation }) {
         style={styles.actionBtn}
         underlayColor="#eee"
       >
-        <Text style={styles.continueText}>Continue</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Text style={styles.continueText}>Continue</Text>
+          <Checkmark width={24} height={24} fill="white" />
+        </View>
+
       </TouchableHighlight>
 
     </View>
@@ -89,6 +95,7 @@ const styles = StyleSheet.create({
   continueText: {
     color: '#fff',
     fontSize: 20,
+    margin: 4,
   },
 
 });

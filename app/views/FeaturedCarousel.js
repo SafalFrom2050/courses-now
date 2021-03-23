@@ -5,6 +5,8 @@ import {
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
+import Star from 'react-native-eva-icons/icons/Star';
+
 import colors from '../config/colors';
 
 const { width: windowWidth, height: windowHeight } = Dimensions.get('window');
@@ -29,7 +31,7 @@ export default function FeaturedCarausel({ style }) {
     imageUrl: 'https://picsum.photos/720/720',
   },
   {
-    name: 'IELTS Masterclass',
+    name: 'IELTS Masterclass 2',
     author: 'Robert Jones',
     stars: 4.0,
     imageUrl: 'https://picsum.photos/720/720',
@@ -40,8 +42,9 @@ export default function FeaturedCarausel({ style }) {
     <FlatList
       data={featuredList}
       style={style}
+      keyExtractor={(item) => item.name}
       renderItem={({ item }) => (
-        <View style={styles.mainItemContainer} key={item.name}>
+        <View style={styles.mainItemContainer}>
           <ImageBackground
             style={styles.imageContainer}
             imageStyle={styles.image}
@@ -54,7 +57,8 @@ export default function FeaturedCarausel({ style }) {
                   {`- By ${item.author}`}
                 </Text>
               </View>
-              <View>
+              <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+                <Star width={20} height={20} fill="white" />
                 <Text style={styles.body}>{item.stars}</Text>
               </View>
 
@@ -72,7 +76,7 @@ export default function FeaturedCarausel({ style }) {
 
 const styles = StyleSheet.create({
   mainItemContainer: {
-    height: '30%',
+    height: 200,
     width: windowWidth,
     paddingRight: 16,
   },
