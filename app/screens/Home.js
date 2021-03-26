@@ -1,26 +1,21 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import {
+  View, StyleSheet, FlatList,
+} from 'react-native';
 
-import ArrowForward from 'react-native-eva-icons/icons/ArrowForward';
-import FeaturedCarousel from '../views/FeaturedCarousel';
+import FeaturedCarousel from '../views/HomeFeaturedCarousel';
+import { default as ListParent } from '../views/HomeListParent';
 
-import Colors from '../config/colors';
-import CommonStyles from '../config/common-styles';
-
-export default function Home() {
+export default function Home({ navigation }) {
   return (
     <View style={styles.container}>
 
-      <View style={CommonStyles.iconView}>
-        <Text styles={CommonStyles.iconText}>Featured</Text>
-        <ArrowForward width={24} height={24} fill={Colors.backgroundText} />
-      </View>
+      <FlatList
+        data={null}
+        ListHeaderComponent={<FeaturedCarousel style={styles.carousel} />}
+        ListFooterComponent={<ListParent navigation={navigation} />}
+      />
 
-      <FeaturedCarousel style={styles.carousel} />
-      <View style={CommonStyles.iconView}>
-        <Text styles={CommonStyles.iconText}>Our Picks</Text>
-        <ArrowForward width={24} height={24} fill={Colors.backgroundText} />
-      </View>
     </View>
   );
 }
@@ -33,4 +28,5 @@ const styles = StyleSheet.create({
     flexGrow: 0,
     padding: 8,
   },
+
 });

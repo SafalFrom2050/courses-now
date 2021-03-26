@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import {
   StyleSheet, Text, View, TextInput, TouchableHighlight,
 } from 'react-native';
 
-import Checkmark from 'react-native-eva-icons/icons/CheckmarkCircle_2';
+import { Icon } from 'react-native-eva-icons';
+import Colors from '../config/colors';
 
 import LoginDecoration from '../views/LoginDecoration';
 
 export default function Login({ navigation }) {
+  const iconRef = useRef();
+
+  const onLogin = async () => {
+    iconRef.current.startAnimation();
+    navigation.navigate('Home');
+  };
+
   return (
     <View style={styles.loginView}>
       <LoginDecoration />
@@ -28,13 +36,13 @@ export default function Login({ navigation }) {
       </View>
 
       <TouchableHighlight
-        onPress={() => navigation.navigate('Home')}
+        onPress={onLogin}
         style={styles.actionBtn}
         underlayColor="#eee"
       >
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <Text style={styles.continueText}>Continue</Text>
-          <Checkmark width={24} height={24} fill="white" />
+          <Icon ref={iconRef} animation="pulse" name="checkmark-circle-2" width={28} height={28} fill="white" />
         </View>
 
       </TouchableHighlight>
@@ -96,6 +104,8 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 20,
     margin: 4,
+    marginLeft: 8,
+    marginRight: 8,
   },
 
 });
