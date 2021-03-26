@@ -9,10 +9,11 @@ import Star from 'react-native-eva-icons/icons/Star';
 import Colors from '../config/colors';
 import CommonStyles from '../config/common-styles';
 
-export default function HomeListItem({ item }) {
+export default function HomeListItem({ item, onItemClick }) {
   return (
     <TouchableNativeFeedback
       background={TouchableNativeFeedback.Ripple(Colors.rippleColor, false)}
+      onPress={onItemClick}
     >
       <View style={styles.container}>
         <Image style={styles.image} source={{ uri: item.imageUrl }} />

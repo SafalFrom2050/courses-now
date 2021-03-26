@@ -43,15 +43,19 @@ export default function HomeListChild({ categoryName, navigation }) {
   ]);
 
   const iconRef = useRef();
-  const onIconPress = () => {
+  const onMoreIconPress = () => {
     iconRef.current.startAnimation();
     navigation.navigate('Category', { category: categoryName });
   };
 
+  function onItemClick(courseName, id) {
+    navigation.navigate('CourseLanding', { courseName, id });
+  }
+
   return (
 
     <View style={{ flex: 1 }}>
-      <TouchableWithoutFeedback onPress={onIconPress}>
+      <TouchableWithoutFeedback onPress={onMoreIconPress}>
         <View style={CommonStyles.iconView}>
           <Text style={CommonStyles.categoryText}>{categoryName}</Text>
 
@@ -64,7 +68,7 @@ export default function HomeListChild({ categoryName, navigation }) {
         keyExtractor={(item) => item.name}
         style={styles.list}
         renderItem={({ item }) => (
-          <HomeListItem item={item} />
+          <HomeListItem item={item} onItemClick={() => onItemClick(item.name, 1)} />
         )}
         horizontal
         pagingEnabled

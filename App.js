@@ -21,6 +21,7 @@ import {
 import Login from './app/screens/Login';
 import Home from './app/screens/Home';
 import Category from './app/screens/Category';
+import CourseLanding from './app/screens/CourseLanding';
 
 const Stack = createStackNavigator();
 
@@ -67,6 +68,11 @@ export default function App() {
           name="Category"
           options={{ title: 'Category' }}
           component={Category}
+        />
+        <Stack.Screen
+          name="CourseLanding"
+          options={{ title: 'Course' }}
+          component={CourseLanding}
         />
       </Stack.Navigator>
     </NavigationContainer>
